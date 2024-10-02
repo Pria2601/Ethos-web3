@@ -1,0 +1,22 @@
+specVersion: 0.0.2
+description: Content Monetization Subgraph
+repository: https://github.com/your-repo
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: CreatorPayments
+    network: rinkeby  # Define the network (testnet or mainnet)
+    source:
+      address: "0xContractAddress"  # Smart contract address
+      abi: CreatorPayments  # ABI of the smart contract
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - Payment  # Define the entity to be indexed
+      eventHandlers:
+        - event: PaymentReceived(address,uint256)
+          handler: handlePaymentReceived  # Define the handler for the event
+      file: ./src/mapping.ts
