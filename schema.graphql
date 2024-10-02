@@ -1,0 +1,8 @@
+# Define the schema for payments indexed by TheGraph
+type Payment @entity {
+  id: ID!  # Unique payment ID
+  from: Bytes!  # Address of the user making the payment
+  amount: BigInt!  # Amount paid
+  creator: Bytes!  # Address of the creator receiving the payment
+  timestamp: BigInt!  # Block timestamp of the payment
+}
